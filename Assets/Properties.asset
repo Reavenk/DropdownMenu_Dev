@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3e20af45dfce34e9b00d675633b888, type: 3}
+  m_Name: Properties
+  m_EditorClassIdentifier: 
+  modalPlateColor: {r: 0, g: 0, b: 0, a: 0.7254902}
+  showTitles: 0
+  outerPadding:
+    top: 5
+    left: 5
+    right: 5
+    bottom: 5
+  titleFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  entryFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  entryFontColor: {r: 0, g: 0, b: 0, a: 1}
+  entryPadding:
+    top: 5
+    left: 5
+    right: 5
+    bottom: 5
+  entryFontSize: 14
+  minEntrySize: 20
+  submenuSpawnArrow: {fileID: 21300000, guid: 2a6be99a239dc3a47be11e865e59308d, type: 3}
+  entrySprite: {fileID: 21300000, guid: 96b2280ae22e1dd4495d1e3661afa761, type: 3}
+  iconTextPadding: 5
+  textArrowPadding: 5
+  shadow: {fileID: 21300000, guid: 06cc21fdee4f56e4482f665a7361887b, type: 3}
+  plate: {fileID: 21300000, guid: 4441822129ebcfe45ab94c6c03d5ecd3, type: 3}
+  shadowOffset: {x: 10, y: -10}
+  splitter: {fileID: 21300000, guid: 05da44105b04c7340bda8a110f0a5974, type: 3}
+  splitterPadding:
+    top: 5
+    left: 5
+    right: 5
+    bottom: 5
+  minSplitter: 10
+  childrenSpacing: 3
