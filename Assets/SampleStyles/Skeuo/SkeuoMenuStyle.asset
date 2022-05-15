@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3e20af45dfce34e9b00d675633b888, type: 3}
+  m_Name: SkeuoMenuStyle
+  m_EditorClassIdentifier: 
+  modalPlateColor: {r: 0.3019608, g: 0.050980393, b: 0.1028014, a: 0.74509805}
+  showTitles: 1
+  outerPadding:
+    top: 10
+    left: 10
+    right: 10
+    bottom: 14
+  unselectedColor: {r: 0.73794055, g: 0.9716981, b: 0.942983, a: 1}
+  selectedColor: {r: 0.8, g: 1, b: 0.8, a: 1}
+  titleFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  entryFont: {fileID: 12800000, guid: 73549f82c56247345a43430e9cca26da, type: 3}
+  entryFontColor: {r: 0, g: 0, b: 0, a: 1}
+  entryPadding:
+    top: 5
+    left: 5
+    right: 5
+    bottom: 5
+  entryFontSize: 18
+  minEntrySize: 18
+  submenuSpawnArrow: {fileID: 21300000, guid: 604854a0316baa04e855c06c2ec2fc11, type: 3}
+  entrySprite: {fileID: 21300000, guid: 18dcc377dba3aa748be04a5eab8004fb, type: 3}
+  iconTextPadding: 5
+  textArrowPadding: 5
+  shadow: {fileID: 21300000, guid: bd37c9995bb496943b6becdab18294cd, type: 3}
+  plate: {fileID: 21300000, guid: 96ceb9686ade05d45b288c5cb69e2979, type: 3}
+  shadowOffset: {x: 5, y: -5}
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.39215687}
+  splitter: {fileID: 21300000, guid: 0e5e5414bc587064f9e1549b6d16191f, type: 3}
+  splitterPadding:
+    top: 5
+    left: 5
+    right: 5
+    bottom: 5
+  minSplitter: 10
+  childrenSpacing: 3
+  scrollbarPlate: {fileID: 21300000, guid: c347120e30fc5f14589af6c9f6e2ba7b, type: 3}
+  overflowScrollbar:
+    spriteNormal: {fileID: 21300000, guid: 96ceb9686ade05d45b288c5cb69e2979, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    colorBlock:
+      m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+      m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+      m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+      m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+      m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
+      m_ColorMultiplier: 1
+      m_FadeDuration: 0.1
+    spriteState:
+      m_HighlightedSprite: {fileID: 21300000, guid: 96ceb9686ade05d45b288c5cb69e2979,
+        type: 3}
+      m_PressedSprite: {fileID: 21300000, guid: 93dd2928acd2d7a4bb42fd23051ff517,
+        type: 3}
+      m_SelectedSprite: {fileID: 21300000, guid: 96ceb9686ade05d45b288c5cb69e2979,
+        type: 3}
+      m_DisabledSprite: {fileID: 0}
+    transition: 2
+  scrollbarWidth: 50
+  scrollSensitivity: 50
+  defaultTextAlignment: 1
+  useGoBack: 1
+  goBackIcon: {fileID: 21300000, guid: 23e6cadbba018894c92fd66b917dbe8b, type: 3}
+  goBackFontSize: 50
+  goBackMessage: Go Back
