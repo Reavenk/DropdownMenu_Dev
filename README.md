@@ -2,6 +2,8 @@
 This is a supporting project to the DropdownMenu_Core library,
 https://github.com/Reavenk/DropdownMenu_Core
 
+It is a UI library for the Unity game engine that represents dropdown menus, and procedurally creates them via the UGUI API on demand.
+
 The Core library repository has the needed files to use the DropMenu functionality. But documentation, examples and test assets are deferred to this repository.
 
 See the README in the Core library to check which version of Unity is expected.
@@ -21,7 +23,8 @@ See the README in the Core library to check which version of Unity is expected.
    |  |-- Scenes
    |  |  |-- SampleScene.unity
    |  |-- Sprites
-   |     | ... Misc asset files
+   |  |  | ... Misc asset files
+   |  |-- AppTest.cs
    |
    | ... The rest of a typical Unity project 
 ```
@@ -72,7 +75,7 @@ void OnButtonClick()
 
 Menus are represented by a hierarchy of menu nodes, but instead of creating those objects directly, a utility class called `StackUtil` with a small API (via its methods) can be used.
 
-`AddAction()` can be used to create action buttons. It takes a `System.Action` for the action to execute if selected. Lambda functions and parameter-less functions can also be used. 
+`AddAction()` can be used to create action buttons. It takes a `System.Action` for the action to execute if selected. Lambda functions and parameter-less functions can also be used. We'll skip over the definition of `OnMenu_Option2()` , because it's just an arbitrary function that gets called if the menu item is selected.
 
 ```C#
    PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("");
@@ -93,7 +96,7 @@ Cascading submenus (aka, child menus) can be added by pushing a submenu context.
    menuStack.PushMenu("Submenu");
       for(int i = 0; i < 10; ++i)
       {
-         int iCpy = i; // The for loop iterator value cannot be used directly.
+         int iCpy = i; // The for loop iterator cannot be used directly.
          menuStack.AddAction($"SubSubOpt {iCpy}", ()=>{Debug.Log(iCpy.ToString());});
       }
    menuStack.PopMenu();
@@ -113,9 +116,44 @@ When you're done adding items to the DropMenu representation of the menu, it's t
 
 The value `this.canvas` is the `UnityEngine.Canvas` that the canvas that both the `RectTransform` of the button, and the created DropMenu will be created for.
 
-The function does not take the `StackUtil` object we've been using, instead it takes the `PxPre.DropMenu.Node` which contains the node hierarchy that was actually being constructed with all the `Add*` calls.
+The function does not take the `StackUtil` object we've been using, instead it takes the `PxPre.DropMenu.Node` which contains the node hierarchy that was being constructed with all the `Add*()` calls.
 
-If you want to create a menu as a specific arbitrary point, there is an overload of `PxPre.DropMenu.DropMenuSpawner.CreateDropdownMenu()` which can do that.
+To put the whole sample together:
+
+```C#
+public void FunctionAction()
+{	// I guess I'll include a definition for FunctionAction() 
+	// in this combined sample.
+	Debug.Log("Ran FunctionAction()");
+}
+
+void OnButtonClick()
+{ 
+	// The button that was clicked, and to create a menu dropdown onto
+	RectTransform rt = this.btn.GetComponent<RectTransform>();
+	PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("");
+
+	menuStack.AddAction("Option 1", ()=>{ Debug.Log("Called Option 1");});
+	menuStack.AddAction("Option 2", this.OnMenu_Option2 );
+    
+	menuStack.AddSeparator();
+    
+	menuStack.PushMenu("Submenu");
+	for(int i = 0; i < 10; ++i)
+	{
+		int iCpy = i; // The for loop iterator cannot be used directly.
+		menuStack.AddAction($"SubSubOpt {iCpy}", ()=>{Debug.Log(iCpy.ToString());});
+	}
+	menuStack.PopMenu();
+    
+	PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(
+        this.canvas,
+        menuStack.Root,
+        rt);
+}
+```
+
+If you want to create a menu as a specific arbitrary point (instead of around a `RectTransform`) there is an overload of `PxPre.DropMenu.DropMenuSpawner.CreateDropdownMenu()` which can do that.
 
 # Notes On The Sample Scene
 
@@ -133,27 +171,27 @@ A description of the various UI elements:
 
 * **Simple Sample**
   * The simplest example of creating a dropdown menu.
-    ![Screen_Simple_Sample](.\README_Images\Screen_Simple_Sample.png)
+    ![Screen_Simple_Sample](README_Images/Screen_Simple_Sample.png)
 * **Separated Sample**
   * A simple example of using a separator to visually divide regions of the menu.
-    ![Screen_Separated_Sample](.\README_Images\Screen_Separated_Sample.png)
+    ![Screen_Separated_Sample](README_Images/Screen_Separated_Sample.png)
 
 * **SubMenu Sample**
   * A simple example of creating a menu with a child submenu.
-    ![Screen_SubMenu_Sample](.\README_Images\Screen_SubMenu_Sample.png)
+    ![Screen_SubMenu_Sample](README_Images/Screen_SubMenu_Sample.png)
 
 * **Deeper SubMenu**
-  * A more complex example of submenus, where the submenu also has submenus.
-    ![Screen_Deeper_SubMenu](.\README_Images\Screen_Deeper_SubMenu.png)
+  * A more complex example of submenus, where the submenu also has a submenu.
+    ![Screen_Deeper_SubMenu](README_Images/Screen_Deeper_SubMenu.png)
 * **Tall Scrollable**
   * An example of the scrollbar feature. When a menu becomes really tall, a vertical scrollbar will be added.
-    ![Screen_Tall_Scrollable](.\README_Images\Screen_Tall_Scrollable.png)
+    ![Screen_Tall_Scrollable](README_Images/Screen_Tall_Scrollable.png)
 * **README Sample**
   * The equivalent of the tutorial mentioned in this README above.
-    ![Screen_README_Sample](.\README_Images\Screen_README_Sample.png)
+    ![Screen_README_Sample](README_Images/Screen_README_Sample.png)
 * **Change Pulldown Style**
   * A demo of changing styles. The button imitates a pulldown which allows changing the style property of the menu being created.
-    ![Screen_Pulldown](.\README_Images\Screen_Pulldown.png)
+    ![Screen_Pulldown](README_Images/Screen_Pulldown.png)
   * The sample comes with two styles:
     * Simple
       * Uses a lot of the Unity default assets for its sprites. Besides that it tries to be basic and reserved on the features it uses.

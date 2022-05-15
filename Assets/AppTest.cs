@@ -245,7 +245,7 @@ public class AppTest : MonoBehaviour
         menuStack.PushMenu("Submenu");
         for (int i = 0; i < 10; ++i)
         {
-            int iCpy = i; // The for loop iterator value cannot be used directly.
+            int iCpy = i; // The for loop iterator cannot be used directly.
             menuStack.AddAction($"SubSubOpt {iCpy}", () => { Debug.Log(iCpy.ToString()); });
         }
         menuStack.PopMenu();
