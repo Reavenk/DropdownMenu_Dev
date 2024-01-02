@@ -95,12 +95,22 @@ public class AppTest : MonoBehaviour
     public UnityEngine.UI.Text txt_StyleName;
 
     /// <summary>
+    /// Whether or not to show the title.
+    /// </summary>
+    public UnityEngine.UI.Toggle toggle_ShowTitle;
+
+    /// <summary>
     /// A sample parameter-less function.
     /// </summary>
     public void FunctionAction()
     {
         Debug.Log("Ran FunctionAction()");
     }
+
+    public PxPre.DropMenu.StyleOverride DisplayFlags()
+    {
+        return toggle_ShowTitle.isOn ? PxPre.DropMenu.StyleOverride.ForceUseTitle : PxPre.DropMenu.StyleOverride.ForceNoTitle;
+    } 
 
     /// <summary>
     /// Button callback for the "Simple Sample" button.
@@ -117,13 +127,13 @@ public class AppTest : MonoBehaviour
         // This creates a PxPre.DropMenu.Node object, wrapped in a
         // PxPre.DropMenu.StackUtil object that provides API members to
         // easily populate the menu.
-        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("");
+        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("Simple Sample");
 
         // Add a menu option to the menu.
         menuStack.AddAction("Function Action", this.FunctionAction);
 
         // Create the popup around the RectTransform of btn_Sample1. 
-        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt);
+        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt, DisplayFlags());
     }
 
     /// <summary>
@@ -137,7 +147,7 @@ public class AppTest : MonoBehaviour
         Debug.Log("Called OnButton_SeparatedSample()");
 
         RectTransform rt = this.btn_Sample2.GetComponent<RectTransform>();
-        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("");
+        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("Separated Sample");
 
         // Similar to OnButton_SimpleSample() except multiple items are added
         // to menuStack, including a separator in between.
@@ -145,7 +155,7 @@ public class AppTest : MonoBehaviour
         menuStack.AddSeparator();
         menuStack.AddAction("Below Separator", () => { Debug.Log("Lambda for Below Separator"); });
 
-        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt);
+        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt, DisplayFlags());
     }
 
     /// <summary>
@@ -159,7 +169,7 @@ public class AppTest : MonoBehaviour
 
         // The button to create a menu dropdown onto
         RectTransform rt = this.btn_Sample3.GetComponent<RectTransform>();
-        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("");
+        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("SubMenu Sample");
 
         // Setting the action to lambda buttons
         menuStack.AddAction("Option 1", () => { Debug.Log("Lambda for Option 1"); });
@@ -174,7 +184,7 @@ public class AppTest : MonoBehaviour
 
         menuStack.AddAction("Option 6", () => { });
 
-        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt);
+        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt, DisplayFlags());
     }
 
     /// <summary>
@@ -189,7 +199,7 @@ public class AppTest : MonoBehaviour
 
         // The button to create a menu dropdown onto
         RectTransform rt = this.btn_Sample4.GetComponent<RectTransform>();
-        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("");
+        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("Deeper SubMenu");
 
         menuStack.PushMenu("Pushed Sub Menu (1)");
             menuStack.AddAction("Option 1", () => { });
@@ -200,7 +210,7 @@ public class AppTest : MonoBehaviour
             menuStack.AddAction("Option 4", () => { });
         menuStack.PopMenu();
 
-        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt);
+        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt, DisplayFlags());
     }
 
     /// <summary>
@@ -212,13 +222,13 @@ public class AppTest : MonoBehaviour
 
         // The button to create a menu dropdown onto
         RectTransform rt = this.btn_Sample5.GetComponent<RectTransform>();
-        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("");
+        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("Tall Scrollable");
 
         // Create a lot of (do nothing) menu items so a vertical scrollbar will be needed.
         for(int i = 0; i < 100; ++i)
             menuStack.AddAction($"Option {i}", () => { }); 
 
-        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt);
+        PxPre.DropMenu.DropMenuSingleton.MenuInst.CreateDropdownMenu(this.canvas, menuStack.Root, rt, DisplayFlags());
     }
 
     void OnMenu_Option2()
@@ -235,7 +245,7 @@ public class AppTest : MonoBehaviour
 
         RectTransform rt = this.btn_Sample6.GetComponent<RectTransform>();
 
-        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("");
+        PxPre.DropMenu.StackUtil menuStack = new PxPre.DropMenu.StackUtil("README Sample");
 
         menuStack.AddAction("Option 1", () => { Debug.Log("Called Option 1"); });
         menuStack.AddAction("Option 2", this.OnMenu_Option2);

@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3e20af45dfce34e9b00d675633b888, type: 3}
   m_Name: SimpleMenuStyle
   m_EditorClassIdentifier: 
+  fallthroughCloseMethod: 0
+  useImageForModalPlate: 1
   modalPlateColor: {r: 0, g: 0, b: 0, a: 0.7254902}
+  menuPlateColor: {r: 1, g: 1, b: 1, a: 1}
   showTitles: 1
   outerPadding:
     top: 5
@@ -21,9 +24,27 @@ MonoBehaviour:
     bottom: 5
   unselectedColor: {r: 1, g: 1, b: 1, a: 1}
   selectedColor: {r: 0.8, g: 1, b: 0.8, a: 1}
-  titleFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  entryFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  titleFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  titlePadding:
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+  useTitlePlate: 1
+  titleColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  titleFontColor: {r: 0, g: 0, b: 0, a: 1}
+  titleFontSize: 20
+  titleCentered: 1
+  entryFont: {fileID: 0}
   entryFontColor: {r: 0, g: 0, b: 0, a: 1}
+  entryButtonColor:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
   entryPadding:
     top: 5
     left: 5
@@ -31,21 +52,26 @@ MonoBehaviour:
     bottom: 5
   entryFontSize: 14
   minEntrySize: 20
+  minEntryWidth: 100
   submenuSpawnArrow: {fileID: 21300000, guid: 2ad27f6ea11fbcc4e88d2dec1fdfa73b, type: 3}
+  submenuArrowScale: 1
   entrySprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   iconTextPadding: 5
   textArrowPadding: 5
+  textLabelShortcutPadding: 20
   shadow: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   plate: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   shadowOffset: {x: 10, y: -10}
   shadowColor: {r: 0, g: 0, b: 0, a: 0.5019608}
   splitter: {fileID: 21300000, guid: 1a3f62c5f8e1763429b407941231574a, type: 3}
+  splitterColor: {r: 1, g: 1, b: 1, a: 1}
   splitterPadding:
-    top: 5
-    left: 5
-    right: 5
-    bottom: 5
-  minSplitter: 10
+    top: 0
+    left: 2
+    right: 2
+    bottom: 0
+  minSplitterWidth: 10
+  minSplitterheight: 5
   childrenSpacing: 3
   scrollbarPlate: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   overflowScrollbar:
